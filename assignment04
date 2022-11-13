@@ -1,0 +1,159 @@
+#include <iostream>
+#include <cmath>
+#include <iomanip>
+#include <string>
+
+using namespace std;
+
+string validationTable(){
+    return 0;
+}
+
+//Variable Declaration;
+	int prodnum, qty;
+	double unitprice;
+	double totalcost;
+	string prodname;
+	char choice;
+
+int vendmachine_v4()
+{
+    cout << "Enter a number between 1 and 7 to select your product. " << endl;
+    cin >> prodnum;
+
+    while ((prodnum < 1) || (prodnum > 7))
+	{
+		cout << " You selected an invalid number! Please try again."<< endl;
+    	cin >> prodnum;
+    }
+    switch(prodnum)
+    {
+		case 1:
+            prodname = "Hershey Bar";
+            unitprice = 1.25;
+            totalcost = qty * unitprice;
+            break;
+        case 2:
+            prodname = "M & Ms";
+            unitprice = 1.99;
+            totalcost = qty * unitprice;
+            break;
+        case 3:
+            prodname = "Mini Oreos";
+            unitprice = 2.50;
+            totalcost = qty * unitprice;
+            break;
+        case 4:
+            prodname = "Cheetos";
+            unitprice = 1.00;
+            totalcost = qty * unitprice;
+            break;
+        case 5:
+            prodname = "Lays";
+            unitprice = 1.75;
+            totalcost = qty * unitprice;
+            break;
+        case 6:
+            prodname = "Tedy Grahams";
+            unitprice = 2.55;
+            totalcost = qty * unitprice;
+            break;
+        case 7:
+            prodname = "Water Bottle";
+            unitprice = 1.99;
+            totalcost = qty * unitprice;
+            break;
+    }
+    cout << "Select the quantity you would like to purchase. " << endl;
+    cin >> qty;
+    while ((qty < 1) || (qty > 5))
+    {
+    	cout << "Invalid quantity. Please try again." << endl;
+    	cin >> qty;
+    }
+    switch (qty) {
+    	case 1: qty = 1;
+    		totalcost = qty * unitprice;
+    		break;
+    	case 2: qty = 2;
+    		totalcost = qty * unitprice;
+    		break;
+    	case 3: qty = 3;
+    		totalcost = qty * unitprice;
+    		break;
+    	case 4: qty = 4;
+    		totalcost = qty * unitprice;
+    		break;
+    	case 5: qty = 5;
+    		totalcost = qty * unitprice;
+    		break;
+    	}
+    cout << "You have selected " << prodname << ", and they are $" << fixed << setprecision(2)
+    	 << unitprice << " each.\n\n" << "You will receive " << qty
+		 << ". The total transaction will cost $" << fixed << setprecision(2) << totalcost
+		 << ".\n" << endl;
+
+    cout << "Please confirm your transaction: " << "\nEnter y, if not, enter anything else. " << endl;
+    char confirm = 'y';
+    cin >> confirm;
+    if (confirm == 'y') {
+        cout << "Purchase confirmed.\n" << endl;
+    }
+    else {
+        cout << "Canceling your purchase.\n" << endl;
+        return 0;
+    }
+
+    //Credit Card Variable Declaration;
+
+    string USERS[5] =
+    	{"shiela berman", "frick maven", "david wolf", "emily warren", "frick maven"};
+    string nameCC = ""; //Name on credit card
+    string numberCC = ""; //Credit card number
+    int expiryMonthCC = 0; //CC Expiration Month
+    int expiryYearCC = 0; //CC Expiration Year
+    int cvsCC = 0; //3 Digit CC pin on back of card
+    string billAddress = ""; //Billing Address
+
+    cout << "Please enter the credit card details: " << endl;
+    cout << "Name on card: " << endl;
+    getline(cin,nameCC);
+    bool exist = false;
+    	exist = nameCC == USERS[0]
+		or nameCC == USERS[1]
+        or nameCC == USERS[2]
+        or nameCC == USERS[3]
+        or nameCC == USERS[4];
+
+    bool valid_length = false;
+    valid_length = nameCC.length() >= 2 && nameCC.length() <=16;
+    if(exist && valid_length){
+    	cout << "Valid name received!" << endl;
+    }
+    else {
+    	cout << "Please enter a valid name: " << endl;
+    	cin >> nameCC;
+    }
+    //End of Name Validation;
+
+    cout << "\nEnter the 4 digit Credit Card Number with no spaces. " << endl;
+    getline(cin, numberCC);
+
+    //Card Number Validation;
+    cout << "Date of Expiration (month) (1-12): " << endl;
+    cin >> expiryMonthCC;
+
+    cout << "Date of Expiration (year) (yyyy): " << endl;
+    cin >> expiryYearCC;
+
+    //logic
+    //test display
+
+    cout << "Details: " << endl;
+    cout << "\t Name: " << nameCC << endl;
+    cout << "\t Card Number: " << numberCC << endl;
+    cout << "\t Exp (month): " << expiryMonthCC << endl;
+    cout << "\t Exp (year): " << expiryYearCC << endl;
+
+    	return 0;
+}
