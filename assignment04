@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <iomanip>
 #include <cmath>
@@ -15,10 +16,11 @@ int vendmachine_v4() {
 
 	cout << "Enter a product number: " << endl;
 	cin >> prodnum;
-	if(!('n' >= 1) && ('n' <= 7)){
-		return 0;
-		}
-	switch (prodnum) {
+	while ((prodnum < 1 || prodnum > 7)){
+		cout << "Invalid product number. Please try again." << endl;
+	cin >> prodnum;
+	}
+	switch (prodnum){
 		case 1:
 			prodname = "Hershey's Bar";
 			unitprice = 1.25;
@@ -45,7 +47,7 @@ int vendmachine_v4() {
 			totalcost = qty * unitprice;
 			break;
 		case 6:
-			prodname = "Teddy Grahams";
+			prodname = "Tedy Grahams";
 			unitprice = 2.55;
 			totalcost = qty * unitprice;
 			break;
@@ -54,12 +56,13 @@ int vendmachine_v4() {
 			unitprice = 1.99;
 			totalcost = qty * unitprice;
 			break;
-	}
 
+	}
 	cout << "Enter a quantity: " << endl;
 	cin >> qty;
-	if (!(qty >= 1) && (qty <= 5)) {
-		return 0;
+	while ((qty < 1 || qty > 5)){
+		cout << "Invalid quantity. Please try again." << endl;
+	cin >> qty;
 	}
 	switch (qty) {
 		case 1: qty = 1;
@@ -82,14 +85,14 @@ int vendmachine_v4() {
 		 << unitprice << " each." << "\nYour total is: " << "\t$" << fixed << setprecision(2)
 		 << totalcost << "." << endl;
 
-	cout << "Confirm your selection- Press Y to accept, or N to cancel: " << endl;
+	cout << "Confirm your selection- Press Y to accept, or anything else to cancel: " << endl;
 	cin >> choice;
-	if (!(choice == 'y')) {
-		cout << "Canceling the previous selection. Thank you.";
-		return 0;
+	if (choice == 'y') {
+		cout << "Confirming your product. Thank you for purchasing.\n";
 	}
-		else if ((choice = 'y')) {
-			cout << "Confirming your product. Thank you for purchasing.\n";
+		else {
+			cout << "Canceling your purchase.";
+			return 0;
 		}
 
     string USERS[5] = {"shiela berman", "frick maven", "david wolf", "emily warren", "frick maven"};
@@ -167,5 +170,5 @@ int vendmachine_v4() {
     	else {
     		cout << "\nCredit card is not accepted. Payment failed." << endl;
     	}
-        	return 0;
+	return 0;
 }
