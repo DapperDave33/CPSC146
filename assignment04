@@ -17,83 +17,83 @@ int vendmachine_v4() {
 	cout << "Enter a product number: " << endl;
 	cin >> prodnum;
 	while ((prodnum < 1 || prodnum > 7)){
-		cout << "Invalid product number. Please try again." << endl;
+	cout << "Invalid product number. Please try again." << endl;
 	cin >> prodnum;
 	}
 	switch (prodnum){
-		case 1:
-			prodname = "Hershey's Bar";
-			unitprice = 1.25;
-			totalcost = qty * unitprice;
-			break;
-		case 2:
-			prodname = "M & Ms";
-			unitprice = 1.99;
-			totalcost = qty * unitprice;
-			break;
-		case 3:
-			prodname = "Mini Oreos";
-			unitprice = 2.50;
-			totalcost = qty * unitprice;
-			break;
-		case 4:
-			prodname = "Cheetos";
-			unitprice = 1.00;
-			totalcost = qty * unitprice;
-			break;
-		case 5:
-			prodname = "Lays";
-			unitprice = 1.75;
-			totalcost = qty * unitprice;
-			break;
-		case 6:
-			prodname = "Tedy Grahams";
-			unitprice = 2.55;
-			totalcost = qty * unitprice;
-			break;
-		case 7:
-			prodname = "Water Bottle";
-			unitprice = 1.99;
-			totalcost = qty * unitprice;
-			break;
+	case 1:
+		prodname = "Hershey's Bar";
+		unitprice = 1.25;
+		totalcost = qty * unitprice;
+		break;
+	case 2:
+		prodname = "M & Ms";
+		unitprice = 1.99;
+		totalcost = qty * unitprice;
+		break;
+	case 3:
+		prodname = "Mini Oreos";
+		unitprice = 2.50;
+		totalcost = qty * unitprice;
+		break;
+	case 4:
+		prodname = "Cheetos";
+		unitprice = 1.00;
+		totalcost = qty * unitprice;
+		break;
+	case 5:
+		prodname = "Lays";
+		unitprice = 1.75;
+		totalcost = qty * unitprice;
+		break;
+	case 6:
+		prodname = "Tedy Grahams";
+		unitprice = 2.55;
+		totalcost = qty * unitprice;
+		break;
+	case 7:
+		prodname = "Water Bottle";
+		unitprice = 1.99;
+		totalcost = qty * unitprice;
+		break;
 
 	}
 	cout << "Enter a quantity: " << endl;
 	cin >> qty;
 	while ((qty < 1 || qty > 5)){
-		cout << "Invalid quantity. Please try again." << endl;
+	cout << "Invalid quantity. Please try again." << endl;
 	cin >> qty;
 	}
 	switch (qty) {
-		case 1: qty = 1;
-			totalcost = qty * unitprice;
+	case 1: qty = 1;
+		totalcost = qty * unitprice;
 		break;
-		case 2: qty = 2;
-			totalcost = qty * unitprice;
+	case 2: qty = 2;
+		totalcost = qty * unitprice;
 		break;
-		case 3: qty = 3;
-			totalcost = qty * unitprice;
+	case 3: qty = 3;
+		totalcost = qty * unitprice;
 		break;
-		case 4: qty = 4;
-			totalcost = qty * unitprice;
+	case 4: qty = 4;
+		totalcost = qty * unitprice;
 		break;
-		case 5: qty = 5;
-			totalcost = qty * unitprice;
+	case 5: qty = 5;
+		totalcost = qty * unitprice;
 		break;
 	}
 	cout << "You selected: " << prodname << "!\nThey are $" << fixed << setprecision(2)
-		 << unitprice << " each." << "\nYour total is: " << "\t$" << fixed << setprecision(2)
-		 << totalcost << "." << endl;
+	     << unitprice << " each." << "\nYour total is: " << "\t$" << fixed << setprecision(2)
+	     << totalcost << "." << endl;
 
 	cout << "Confirm your selection- Press Y to accept, or anything else to cancel: " << endl;
 	cin >> choice;
 	if (choice == 'y') {
-		cout << "Confirming your product. Thank you for purchasing.\n";
+	cout << "Confirming your product. Thank you for purchasing.\n";
 	}
-		else {
-			cout << "Canceling your purchase.";
-			return 0;
-		}
+	else {
+	cout << "Canceling your purchase.";
+		return 0;
+	}
 
     string USERS[5] = {"shiela berman", "frick maven", "david wolf", "emily warren", "frick maven"};
     string nameCC = ""; // Name on card
@@ -101,14 +101,15 @@ int vendmachine_v4() {
 	string billAddress = ""; //Billing Address
 	string cvsCC = "";
     int expiryMonthCC = 0;
-	int expiryYearCC = 0;
+    int expiryYearCC = 0;
 
     cout << "Please enter your credit card details.\nName on Card: " << endl;
-    	cin.ignore();
+    cin.ignore();
     getline(cin, nameCC);
+
     bool exist = false;
     exist = (nameCC == USERS[0]
-		or nameCC == USERS[1]
+        or nameCC == USERS[1]
     	or nameCC == USERS[2]
     	or nameCC == USERS[3]
     	or nameCC == USERS[4]);
@@ -117,7 +118,7 @@ int vendmachine_v4() {
     bool nameConfirm = false;
     nameConfirm = exist && valid_length;
     if (!(nameConfirm)) {
-    	cout << "Name on card validation failed." << endl;
+    cout << "Name on card validation failed." << endl;
     }
     cout << "Enter the 4 digit Credit Card Number with no spaces: " << endl;
     cin.ignore();
@@ -130,45 +131,47 @@ int vendmachine_v4() {
     numberCCflag = ((numberCC.length() > 3) && (numberCC.length() < 5));
     bool numberConfirm = false;
     numberConfirm = ((!(numberCCflag)) && (!(alldigits)));
-       if (!(numberConfirm)) {
-    	cout << "Credit card validation failed." << endl;
+    if (!(numberConfirm)) {
+    cout << "Credit card validation failed." << endl;
     }
     cout << "Date of Expiration (month) (1-12): " << endl;
-    	cin >> expiryMonthCC;
+    cin >> expiryMonthCC;
     cout << "Date of Expiration (year) (yyyy): " << endl;
-        cin >> expiryYearCC;
-        cin.clear();
-        cin.ignore(255,'\n');
+    cin >> expiryYearCC;
+    cin.clear();
+    cin.ignore(255,'\n');
     bool expiryMonthConfirm = false;
     bool expiryYearConfirm = false;
     expiryMonthConfirm = ((expiryMonthCC >= 1) && (expiryMonthCC <= 12));
     expiryYearConfirm = ((expiryYearCC < 2099) && (expiryYearCC >= 2022));
     if ((!(expiryMonthConfirm)) || (!(expiryYearConfirm))){
-    	cout << "Credit card expired!" << endl;
+    cout << "Credit card expired!" << endl;
     }
     cout << "Please input CVS Number " << endl;
-        cin >> cvsCC;
-        bool numberCvsflag = false;
-        bool cvsalldigits = false;
-        	cvsalldigits = ((isdigit(cvsCC[0])) && (isdigit(cvsCC[1])) && (isdigit(cvsCC[2])));
-        	numberCvsflag = (cvsCC.length() == 3);
-        bool cvsConfirm = numberCvsflag && cvsalldigits;
-        if (!(cvsConfirm)){
-        	cout << "Invalid CVS number!" << endl;
-        }
-        cout << "Please enter a billing address. " << endl;
-        cin >> billAddress;
-        bool billingConfirm = false;
-        billingConfirm = ((billAddress.size() > 4) && (billAddress.size() < 8));
-        if(!(billingConfirm)) {
-            cout << "This is not a valid billing address. " << endl;
-        }
+    cin >> cvsCC;
+    bool numberCvsflag = false;
+    bool cvsalldigits = false;
+    	 cvsalldigits = ((isdigit(cvsCC[0])) && (isdigit(cvsCC[1])) && (isdigit(cvsCC[2])));
+         numberCvsflag = (cvsCC.length() == 3);
+    bool cvsConfirm = numberCvsflag && cvsalldigits;
+    if (!(cvsConfirm)){
+    cout << "Invalid CVS number!" << endl;
+    }
+    cout << "Please enter a billing address. " << endl;
+    cin >> billAddress;
+    bool billingConfirm = false;
+    billingConfirm = ((billAddress.size() > 4) && (billAddress.size() < 8));
+    if(!(billingConfirm)) {
+    cout << "This is not a valid billing address. " << endl;
+    }
     if ((nameConfirm) && (numberConfirm) && (expiryMonthConfirm) &&
     	(expiryYearConfirm) && (cvsConfirm) && (billingConfirm)){
-    	cout << "\nCredit card accepted. Processing payment." << endl;
+    cout << "\nCredit card accepted. Processing payment." << endl;
     }
-    	else {
-    		cout << "\nCredit card is not accepted. Payment failed." << endl;
-    	}
+    else {
+    cout << "\nCredit card is not accepted. Payment failed." << endl;
+    }
 	return 0;
 }
+
+
