@@ -3,160 +3,84 @@
 #include <iomanip>
 #include <string>
 
-using namespace std;
-
-string validationTable(){
-    return 0;
-}
-
-//Variable Declaration;
-	int prodnum, qty;
-	double unitprice;
-	double totalcost;
-	string prodname;
-	char choice;
-
-int vendmachine_v4()
-{
-    cout << "Enter a number between 1 and 7 to select your product. " << endl;
-    cin >> prodnum;
-
-    while ((prodnum < 1) || (prodnum > 7))
-	{
-		cout << " You selected an invalid number! Please try again."<< endl;
-    	cin >> prodnum;
-    }
-    switch(prodnum)
-    {
-		case 1:
-            prodname = "Hershey Bar";
-            unitprice = 1.25;
-            totalcost = qty * unitprice;
-            break;
-        case 2:
-            prodname = "M & Ms";
-            unitprice = 1.99;
-            totalcost = qty * unitprice;
-            break;
-        case 3:
-            prodname = "Mini Oreos";
-            unitprice = 2.50;
-            totalcost = qty * unitprice;
-            break;
-        case 4:
-            prodname = "Cheetos";
-            unitprice = 1.00;
-            totalcost = qty * unitprice;
-            break;
-        case 5:
-            prodname = "Lays";
-            unitprice = 1.75;
-            totalcost = qty * unitprice;
-            break;
-        case 6:
-            prodname = "Tedy Grahams";
-            unitprice = 2.55;
-            totalcost = qty * unitprice;
-            break;
-        case 7:
-            prodname = "Water Bottle";
-            unitprice = 1.99;
-            totalcost = qty * unitprice;
-            break;
-    }
-    cout << "Select the quantity you would like to purchase. " << endl;
-    cin >> qty;
-    while ((qty < 1) || (qty > 5))
-    {
-    	cout << "Invalid quantity. Please try again." << endl;
-    	cin >> qty;
-    }
-    switch (qty) {
-    	case 1: qty = 1;
-    		totalcost = qty * unitprice;
-    		break;
-    	case 2: qty = 2;
-    		totalcost = qty * unitprice;
-    		break;
-    	case 3: qty = 3;
-    		totalcost = qty * unitprice;
-    		break;
-    	case 4: qty = 4;
-    		totalcost = qty * unitprice;
-    		break;
-    	case 5: qty = 5;
-    		totalcost = qty * unitprice;
-    		break;
-    	}
-    cout << "You have selected " << prodname << ", and they are $" << fixed << setprecision(2)
-    	 << unitprice << " each.\n\n" << "You will receive " << qty
-		 << ". The total transaction will cost $" << fixed << setprecision(2) << totalcost
-		 << ".\n" << endl;
-
-    cout << "Please confirm your transaction: " << "\nEnter y, if not, enter anything else. " << endl;
-    char confirm = 'y';
-    cin >> confirm;
-    if (confirm == 'y') {
-        cout << "Purchase confirmed.\n" << endl;
-    }
-    	else {
-        cout << "Canceling your purchase.\n" << endl;
-        return 0;
-    	}
-
-    //Credit Card Variable Declaration;
+//Credit Card Variable Declaration;
 
     string USERS[5] = {"shiela berman", "frick maven", "david wolf", "emily warren", "frick maven"};
     string nameCC = ""; // Name on card
     string numberCC = ""; // Credit Card Number
 	string billAddress = ""; //Billing Address
+	string cvsCC = "";
     int expiryMonthCC = 0;
 	int expiryYearCC = 0;
-	int cvsCC = 0;
 
     cout << "Please enter your credit card details.\nName on Card: " << endl;
-    cin.ignore();
+    	cin.ignore();
     getline(cin, nameCC);
-    	bool exist = false;
-    	exist = (nameCC == USERS[0]
-			or nameCC == USERS[1]
-    		or nameCC == USERS[2]
-    		or nameCC == USERS[3]
-    		or nameCC == USERS[4]);
-    	bool valid_length = false;
-    		 valid_length = ((nameCC.length() >= 2) && (nameCC.length() <=16));
-    	if (!(exist && valid_length)){
-    		cout << "Please enter a valid name: " << endl;
-    	}
-    	else {
-    		cout << "Name is valid!" << endl;
-    		cout << "Enter the 4 digit Credit Card Number with no spaces: " << endl;
-    		cin.ignore();
-    		getline(cin, numberCC);
-    		    bool numberCCflag = false;
-    		    bool alldigits = false;
-    		    alldigits = (isdigit(numberCC[0]), (numberCC[1]), (numberCC[2]), (numberCC[3]));
-    		    numberCCflag = (numberCC.length() == 4 && alldigits);
-    		    if (numberCCflag == true){
-    		    	cout << "Card number valid!" << endl;
-    		    }
-    		    else {
-    		    	cout << "Invalid card number." << endl;
-    		    }
-    	}
+    bool exist = false;
+    exist = (nameCC == USERS[0]
+		or nameCC == USERS[1]
+    	or nameCC == USERS[2]
+    	or nameCC == USERS[3]
+    	or nameCC == USERS[4]);
+    bool valid_length = false;
+    valid_length = ((nameCC.length() >= 2) && (nameCC.length() <=16));
+    bool nameConfirm = false;
+    nameConfirm = exist && valid_length;
+    if (!(nameConfirm)) {
+    	cout << "Name on card validation failed." << endl;
+    }
+    cout << "Enter the 4 digit Credit Card Number with no spaces: " << endl;
+    cin.ignore();
+    getline(cin, numberCC);
+
+    bool alldigits = false;
+    bool numberCCflag = false;
+    alldigits = ((isdigit(numberCC[0])) && (isdigit(numberCC[1]))
+    		 && (isdigit(numberCC[2])) && (isdigit(numberCC[3])));
+    numberCCflag = ((numberCC.length() > 3) && (numberCC.length() < 5));
+    bool numberConfirm = false;
+    numberConfirm = ((!(numberCCflag)) && (!(alldigits)));
+    if (!(numberConfirm)) {
+    	cout << "Credit card validation failed." << endl;
+    }
     cout << "Date of Expiration (month) (1-12): " << endl;
     	cin >> expiryMonthCC;
     cout << "Date of Expiration (year) (yyyy): " << endl;
-    	cin >> expiryYearCC;
-
-        //logic
-        //test display
-
-        cout << "Details: " << endl;
-        cout << "\t Name: " << nameCC << endl;
-        cout << "\t Card Number: " << numberCC << endl;
-        cout << "\t Exp (month): " << expiryMonthCC << endl;
-        cout << "\t Exp (year): " << expiryYearCC << endl;
-
+        cin >> expiryYearCC;
+        cin.clear();
+        cin.ignore(255,'\n');
+    bool expiryMonthConfirm = false;
+    bool expiryYearConfirm = false;
+    expiryMonthConfirm = ((expiryMonthCC >= 1) && (expiryMonthCC <= 12));
+    expiryYearConfirm = ((expiryYearCC < 2099) && (expiryYearCC >= 2022));
+    if ((!(expiryMonthConfirm)) || (!(expiryYearConfirm))){
+    	cout << "Credit card expired!" << endl;
+    }
+    cout << "Please input CVS Number " << endl;
+        cin >> cvsCC;
+        bool numberCvsflag = false;
+        bool cvsalldigits = false;
+        	cvsalldigits = ((isdigit(cvsCC[0])) && (isdigit(cvsCC[1])) && (isdigit(cvsCC[2])));
+        	numberCvsflag = (cvsCC.length() == 3);
+        bool cvsConfirm = numberCvsflag && cvsalldigits;
+        if (!(cvsConfirm)){
+        	cout << "Invalid CVS number!" << endl;
+        }
+        cout << "Please enter a billing address. " << endl;
+        cin >> billAddress;
+        bool billingConfirm = false;
+        billingConfirm = ((billAddress.size() > 4) && (billAddress.size() < 8));
+        if(!(billingConfirm)) {
+            cout << "This is not a valid billing address. " << endl;
+        }
+    if ((nameConfirm) && (numberConfirm) && (expiryMonthConfirm) &&
+    	(expiryYearConfirm) && (cvsConfirm) && (billingConfirm)){
+    	cout << "\nCredit card accepted. Processing payment." << endl;
+    }
+    	else {
+    		cout << "\nCredit card is not accepted. Payment failed." << endl;
+    	}
         	return 0;
     }
+
+
