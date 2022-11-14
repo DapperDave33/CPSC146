@@ -1,9 +1,11 @@
 #include <iostream>
-#include <cmath>
 #include <iomanip>
+#include <cmath>
 #include <string>
 
-//Credit Card Variable Declaration;
+using namespace std;
+
+int vendmachine_v4() {
 
     string USERS[5] = {"shiela berman", "frick maven", "david wolf", "emily warren", "frick maven"};
     string nameCC = ""; // Name on card
@@ -25,7 +27,7 @@
     bool valid_length = false;
     valid_length = ((nameCC.length() >= 2) && (nameCC.length() <=16));
     bool nameConfirm = false;
-    nameConfirm = exist && valid_length;
+    nameConfirm = (!(exist) && (valid_length));
     if (!(nameConfirm)) {
     	cout << "Name on card validation failed." << endl;
     }
@@ -81,6 +83,4 @@
     		cout << "\nCredit card is not accepted. Payment failed." << endl;
     	}
         	return 0;
-    }
-
-
+}
