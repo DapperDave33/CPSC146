@@ -99,61 +99,64 @@ int vendmachine_v4()
     if (confirm == 'y') {
         cout << "Purchase confirmed.\n" << endl;
     }
-    else {
+    	else {
         cout << "Canceling your purchase.\n" << endl;
         return 0;
-    }
+    	}
 
     //Credit Card Variable Declaration;
 
-    string USERS[5] =
-    	{"shiela berman", "frick maven", "david wolf", "emily warren", "frick maven"};
-    string nameCC = ""; //Name on credit card
-    string numberCC = ""; //Credit card number
-    int expiryMonthCC = 0; //CC Expiration Month
-    int expiryYearCC = 0; //CC Expiration Year
-    int cvsCC = 0; //3 Digit CC pin on back of card
-    string billAddress = ""; //Billing Address
+    string USERS[5] = {"shiela berman", "frick maven", "david wolf", "emily warren", "frick maven"};
+    string nameCC = ""; // Name on card
+    string numberCC = ""; // Credit Card Number
+	string billAddress = ""; //Billing Address
+    int expiryMonthCC = 0;
+	int expiryYearCC = 0;
+	int cvsCC = 0;
 
-    cout << "Please enter the credit card details: " << endl;
-    cout << "Name on card: " << endl;
-    getline(cin,nameCC);
-    bool exist = false;
-    	exist = nameCC == USERS[0]
-		or nameCC == USERS[1]
-        or nameCC == USERS[2]
-        or nameCC == USERS[3]
-        or nameCC == USERS[4];
-
-    bool valid_length = false;
-    valid_length = nameCC.length() >= 2 && nameCC.length() <=16;
-    if(exist && valid_length){
-    	cout << "Valid name received!" << endl;
-    }
-    else {
-    	cout << "Please enter a valid name: " << endl;
-    	cin >> nameCC;
-    }
-    //End of Name Validation;
-
-    cout << "\nEnter the 4 digit Credit Card Number with no spaces. " << endl;
-    getline(cin, numberCC);
-
-    //Card Number Validation;
+    cout << "Please enter your credit card details.\nName on Card: " << endl;
+    cin.ignore();
+    getline(cin, nameCC);
+    	bool exist = false;
+    	exist = (nameCC == USERS[0]
+			or nameCC == USERS[1]
+    		or nameCC == USERS[2]
+    		or nameCC == USERS[3]
+    		or nameCC == USERS[4]);
+    	bool valid_length = false;
+    		 valid_length = ((nameCC.length() >= 2) && (nameCC.length() <=16));
+    	if (!(exist && valid_length)){
+    		cout << "Please enter a valid name: " << endl;
+    	}
+    	else {
+    		cout << "Name is valid!" << endl;
+    		cout << "Enter the 4 digit Credit Card Number with no spaces: " << endl;
+    		cin.ignore();
+    		getline(cin, numberCC);
+    		    bool numberCCflag = false;
+    		    bool alldigits = false;
+    		    alldigits = (isdigit(numberCC[0]), (numberCC[1]), (numberCC[2]), (numberCC[3]));
+    		    numberCCflag = (numberCC.length() == 4 && alldigits);
+    		    if (numberCCflag == true){
+    		    	cout << "Card number valid!" << endl;
+    		    }
+    		    else {
+    		    	cout << "Invalid card number." << endl;
+    		    }
+    	}
     cout << "Date of Expiration (month) (1-12): " << endl;
-    cin >> expiryMonthCC;
-
+    	cin >> expiryMonthCC;
     cout << "Date of Expiration (year) (yyyy): " << endl;
-    cin >> expiryYearCC;
+    	cin >> expiryYearCC;
 
-    //logic
-    //test display
+        //logic
+        //test display
 
-    cout << "Details: " << endl;
-    cout << "\t Name: " << nameCC << endl;
-    cout << "\t Card Number: " << numberCC << endl;
-    cout << "\t Exp (month): " << expiryMonthCC << endl;
-    cout << "\t Exp (year): " << expiryYearCC << endl;
+        cout << "Details: " << endl;
+        cout << "\t Name: " << nameCC << endl;
+        cout << "\t Card Number: " << numberCC << endl;
+        cout << "\t Exp (month): " << expiryMonthCC << endl;
+        cout << "\t Exp (year): " << expiryYearCC << endl;
 
-    	return 0;
-}
+        	return 0;
+    }
