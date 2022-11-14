@@ -6,6 +6,91 @@
 using namespace std;
 
 int vendmachine_v4() {
+	//Variable Declaration
+	int prodnum, qty;
+	double unitprice;
+	double totalcost;
+	string prodname;
+	char choice;
+
+	cout << "Enter a product number: " << endl;
+	cin >> prodnum;
+	if(!('n' >= 1) && ('n' <= 7)){
+		return 0;
+		}
+	switch (prodnum) {
+		case 1:
+			prodname = "Hershey's Bar";
+			unitprice = 1.25;
+			totalcost = qty * unitprice;
+			break;
+		case 2:
+			prodname = "M & Ms";
+			unitprice = 1.99;
+			totalcost = qty * unitprice;
+			break;
+		case 3:
+			prodname = "Mini Oreos";
+			unitprice = 2.50;
+			totalcost = qty * unitprice;
+			break;
+		case 4:
+			prodname = "Cheetos";
+			unitprice = 1.00;
+			totalcost = qty * unitprice;
+			break;
+		case 5:
+			prodname = "Lays";
+			unitprice = 1.75;
+			totalcost = qty * unitprice;
+			break;
+		case 6:
+			prodname = "Teddy Grahams";
+			unitprice = 2.55;
+			totalcost = qty * unitprice;
+			break;
+		case 7:
+			prodname = "Water Bottle";
+			unitprice = 1.99;
+			totalcost = qty * unitprice;
+			break;
+	}
+
+	cout << "Enter a quantity: " << endl;
+	cin >> qty;
+	if (!(qty >= 1) && (qty <= 5)) {
+		return 0;
+	}
+	switch (qty) {
+		case 1: qty = 1;
+			totalcost = qty * unitprice;
+		break;
+		case 2: qty = 2;
+			totalcost = qty * unitprice;
+		break;
+		case 3: qty = 3;
+			totalcost = qty * unitprice;
+		break;
+		case 4: qty = 4;
+			totalcost = qty * unitprice;
+		break;
+		case 5: qty = 5;
+			totalcost = qty * unitprice;
+		break;
+	}
+	cout << "You selected: " << prodname << "!\nThey are $" << fixed << setprecision(2)
+		 << unitprice << " each." << "\nYour total is: " << "\t$" << fixed << setprecision(2)
+		 << totalcost << "." << endl;
+
+	cout << "Confirm your selection- Press Y to accept, or N to cancel: " << endl;
+	cin >> choice;
+	if (!(choice == 'y')) {
+		cout << "Canceling the previous selection. Thank you.";
+		return 0;
+	}
+		else if ((choice = 'y')) {
+			cout << "Confirming your product. Thank you for purchasing.\n";
+		}
 
     string USERS[5] = {"shiela berman", "frick maven", "david wolf", "emily warren", "frick maven"};
     string nameCC = ""; // Name on card
@@ -27,7 +112,7 @@ int vendmachine_v4() {
     bool valid_length = false;
     valid_length = ((nameCC.length() >= 2) && (nameCC.length() <=16));
     bool nameConfirm = false;
-    nameConfirm = (!(exist) && (valid_length));
+    nameConfirm = exist && valid_length;
     if (!(nameConfirm)) {
     	cout << "Name on card validation failed." << endl;
     }
@@ -42,7 +127,7 @@ int vendmachine_v4() {
     numberCCflag = ((numberCC.length() > 3) && (numberCC.length() < 5));
     bool numberConfirm = false;
     numberConfirm = ((!(numberCCflag)) && (!(alldigits)));
-    if (!(numberConfirm)) {
+       if (!(numberConfirm)) {
     	cout << "Credit card validation failed." << endl;
     }
     cout << "Date of Expiration (month) (1-12): " << endl;
