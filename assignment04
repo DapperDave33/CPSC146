@@ -147,7 +147,7 @@ int vendmachine_v4() {
     if ((!(expiryMonthConfirm)) || (!(expiryYearConfirm))){
     cout << "Credit card expired!" << endl;
     }
-    cout << "Please input CVS Number " << endl;
+    cout << "Please input CVS Number: " << endl;
     cin >> cvsCC;
     bool numberCvsflag = false;
     bool cvsalldigits = false;
@@ -157,7 +157,7 @@ int vendmachine_v4() {
     if (!(cvsConfirm)){
     cout << "Invalid CVS number!" << endl;
     }
-    cout << "Please enter a billing address. " << endl;
+    cout << "Please enter a billing address: " << endl;
     cin >> billAddress;
     bool billingConfirm = false;
     billingConfirm = ((billAddress.size() > 4) && (billAddress.size() < 8));
@@ -169,7 +169,7 @@ int vendmachine_v4() {
     cout << "\nCredit card accepted. Processing payment." << endl;
     }
     else {
-    cout << "\nCredit card is not accepted. Payment failed." << endl;
+    cout << "\nCredit card is not accepted. Payment failed!" << endl;
     }
 	return 0;
 }
